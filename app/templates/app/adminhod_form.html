@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+{% block title %}AdminHOD Form{% endblock %}
+{% block header %}AdminHOD Form{% endblock %}
+{% block content %}
+<form method="post">{% csrf_token %}{{ form.as_p }}
+<button type="submit" class="btn btn-primary">Save</button>
+<a href="{% url 'adminhod_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!-- app/templates/app/grades_edit_grade.html -->
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>Edit Grade</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="student_id">Student:</label>
+    <select name="student_id" required>
+        {% for student in students %}
+        <option value="{{ student.id }}" {% if student.id == grade.student_id.id %}selected{% endif %}>{{ student.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="subject_id">Subject:</label>
+    <select name="subject_id" required>
+        {% for subject in subjects %}
+        <option value="{{ subject.id }}" {% if subject.id == grade.subject_id.id %}selected{% endif %}>{{ subject.subject_name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="grade">Grade:</label>
+    <input type="text" name="grade" value="{{ grade.grade }}" required><br><br>
+
+    <label for="remarks">Remarks:</label>
+    <textarea name="remarks">{{ grade.remarks }}</textarea><br><br>
+
+    <button type="submit">Update Grade</button>
+</form>
+
+<a href="{% url 'grade_list' %}">Back to List</a>
+{% endblock %}

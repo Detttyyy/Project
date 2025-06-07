@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>{% if object %}Update Staff{% else %}Create Staff{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+    <a href="{% url 'staffs_list' %}">Cancel</a>
+</form>
+{% endblock %}

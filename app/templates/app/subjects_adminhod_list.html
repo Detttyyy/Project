@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% block content %}
+  <h2 class="mb-4">Subjects List</h2>
+
+  <a class="btn btn-primary mb-3" href="{% url 'subjects_create' %}">+ Add Subject</a>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Staff</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for subject in object_list %}
+        <tr>
+          <td>{{ subject.id }}</td>
+          <td>{{ subject.subject_name }}</td>
+          <td>{{ subject.course }}</td>
+          <td>{{ subject.staff }}</td>
+          <td>
+            <a href="{% url 'subjects_update' subject.id %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'subjects_delete' subject.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5" class="text-center">No subjects found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

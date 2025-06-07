@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% block title %}AdminHOD List{% endblock %}
+{% block header %}AdminHOD List{% endblock %}
+{% block content %}
+<a href="{% url 'adminhod_create' %}" class="btn btn-success mb-3">Add AdminHOD</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.id }}</td>
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.email }}</td>
+            <td>
+                <a href="{% url 'adminhod_update' obj.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'adminhod_delete' obj.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No records found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

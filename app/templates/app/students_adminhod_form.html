@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>{% if object %}Update Student{% else %}Create Student{% endif %}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+    <a href="{% url 'students_list' %}">Cancel</a>
+</form>
+{% endblock %}

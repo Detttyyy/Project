@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+{% block title %}Delete AdminHOD{% endblock %}
+{% block header %}Delete AdminHOD{% endblock %}
+{% block content %}
+<p>Are you sure you want to delete "{{ object.name }}"?</p>
+<form method="post">{% csrf_token %}
+<button type="submit" class="btn btn-danger">Yes, Delete</button>
+<a href="{% url 'adminhod_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

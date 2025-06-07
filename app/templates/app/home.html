@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% url 'css/base.css&}">
+    <h1>Student Management Dashboard</h1>
+
+<h2>Students</h2>
+<ul>
+  {% for student in students %}
+    <li>{{ student.name }} (ID: {{ student.id }})</li>
+  {% endfor %}
+</ul>
+
+<h2>Courses</h2>
+<ul>
+  {% for course in courses %}
+    <li>{{ course.name }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Subjects</h2>
+<ul>
+  {% for subject in subjects %}
+    <li>{{ subject.name }} {{ subject.course.name }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Attendance</h2>
+<ul>
+  {% for record in attendance %}
+    <li>{{ record.student.name }} - {{ record.date }} - {{ record.status }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Grades</h2>
+<ul>
+  {% for grade in grades %}
+    <li>{{ grade.student.name }} - {{ grade.subject.name }}: {{ grade.score }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Debug Data Counts</h2>
+<p>Students: {{ students.count }}</p>
+<p>Courses: {{ courses.count }}</p>
+<p>Subjects: {{ subjects.count }}</p>
+<p>Attendance: {{ attendance.count }}</p>
+<p>Grades: {{ grades.count }}</p>
+{% endblock content %}
